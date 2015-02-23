@@ -17,7 +17,7 @@
 					<select name="country" class="form-control">
 						<option value=""></option>
 						<% %w(BE BR GB US).each do |country| %>
-			      	<option value="<%= country %>" <%= 'selected="selected"' if params[:country] == country %><%= country %></option>
+			      	<option value="<%= country %>" <%= 'selected="selected"' if params[:country] == country %>><%= country %></option>
 			      <% end %>
 					</select>
 				</div>
@@ -33,14 +33,26 @@
 				</form>
 			</div>
 			<div class="col-md-6">
-				<h2>Holidays in Your Birth Month</h2>
-					<ul>
-						<% @holidays_yourbirth.each do |date| %>
-							<% date.each do |holiday| %>
-							<li><%= holiday['name']%>: <%=holiday['date'] %></li>
-							<% end %>
+				<% if params ['year'] != nil && params ['year'] !="" %>
+					<% if params ['month'] != nil && params ['month'] !="" %>
+						<% if params ['country'] != nil && params ['country'] !="" %>
+							<h2>Holidays in Your Birth Month</h2>
+								<ul>
+									<% @holidays_yourbirth.each do |date| %>
+										<% date.each do |holiday| %>
+										<li><%= holiday['name']%>: <%=holiday['date'] %></li>
+										<% end %>
+									<% end %>
+								</ul>		
+						<% else %>
+							<p>Please enter a country.</p>
 						<% end %>
-					</ul>		
+					<% else %>
+						<p>Please enter a month.</p>
+					<% end %>
+				<% else %>
+					<p>Please enter a year.</p>
+				<% end %>
 			</div>
 		</div>
 	</div>
