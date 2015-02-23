@@ -3,9 +3,9 @@ require 'holidapi'
 
 class MyWebApp < Sinatra::Base
   get '/' do
-    if params ['year'] != nil && params ['year'] != ""
-      if params ['month'] != nil && params ['month'] != ""
-        if params ['country'] != nil && params ['country'] != ""
+    if params['year'] != nil && params['year'] != ""
+      if params['month'] != nil && params['month'] != ""
+        if params['country'] != nil && params['country'] != ""
           @holidays_yourbirth = HolidApi.get(country: params['country'], year: params['year'], month: params['month'])
         else
           @holidays_yourbirth = HolidApi.get(country: 'US', year: params['year'], month: params['month'])

@@ -33,9 +33,9 @@
 				</form>
 			</div>
 			<div class="col-md-6">
-				<% if params ['year'] != nil && params ['year'] !="" %>
-					<% if params ['month'] != nil && params ['month'] !="" %>
-						<% if params ['country'] != nil && params ['country'] !="" %>
+				<% if params['year'] != nil && params['year'] !="" %>
+					<% if params['month'] != nil && params['month'] !="" %>
+						<% if params['country'] != nil && params['country'] !="" %>
 							<h2>Holidays in Your Birth Month</h2>
 								<ul>
 									<% @holidays_yourbirth.each do |date| %>
